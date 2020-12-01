@@ -30,6 +30,12 @@ RUN mkdir -p ${PIP_TARGET} \
 # ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update \
    && apt-get -y install --no-install-recommends gcc \
+   libglib2.0-0 \
+   libglib2.0 \
+   libsm6 \
+   libxrender1\
+   libxext6 \
+   xvfb \
    #
    # Clean up
    && apt-get autoremove -y \
