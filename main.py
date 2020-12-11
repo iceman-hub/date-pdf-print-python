@@ -23,7 +23,7 @@ def get_structure(path) -> np.array:
     # get only vertical lines
     kernel = cv2.getStructuringElement(cv2.MORPH_RECT,(1,25))
     vertical = cv2.morphologyEx(thres, cv2.MORPH_OPEN, kernel)
-
+    
     # recovery vertical lines
     kernel = np.ones((50,1),np.uint8)
     vertical = cv2.dilate(vertical,kernel,iterations = 1)
@@ -87,6 +87,14 @@ def draw_line_to_row(path):
         draw.line((0,0) + row_point, fill=128, width=10)
         doc_image.save("test.png", "PNG")
 
+    with Image.open('structure.png') as doc_image:
+        draw = ImageDraw.Draw(doc_image)
+
+        draw.line((0,0) + row_point, fill=255, width=10)
+        draw.line((0,0, 956,507), fill=255, width=10)
+
+        doc_image.save("structure.png", "PNG")
+
 
 def load_image_from_setting(save_path):
     http = urllib3.PoolManager()
@@ -107,6 +115,11 @@ def load_ocr():
 
 load_image_from_setting(settings.image_name)
 structure = get_structure(settings.image_name)
+
+cv2.imwrite('structure.png', structure)
+
+
+
 
 load_ocr()
 ocr = pn.read_csv('ocrData.csv')

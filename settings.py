@@ -17,9 +17,15 @@
 # type = 'ТрН'
 
 # картинка ТТН, наклоненная
-image_key = "5fa930039619c4b351162737"
-href = "http://api.sherlocktest.kt-team.de/api/pages/" + image_key
-type = 'ТТН'
+# image_key = "5fa930039619c4b351162737"
+# href = "http://api.sherlocktest.kt-team.de/api/pages/" + image_key
+# type = 'ТТН'
+
+# картинка ТрН, неправильная
+image_key = "5fc5ee0658e3546f097dd7fd"
+href = "https://api.sherlock.kt-team.de/api/pages/" + image_key
+type = 'ТрН'
+
 
 image_href = href + "/image/actual"
 ocr_href = href + "/ocr"
